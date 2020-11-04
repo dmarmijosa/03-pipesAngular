@@ -18,6 +18,11 @@
             </thead>
             <tbody>
                 <tr>
+                    <td>{{nombre2}}</td>
+                    <td>capitalizado:true</td>
+                    <td>{{nombre2| capitalizado:true}}</td>
+                </tr>
+                <tr>
                     <td>{{nombre}}</td>
                     <td>Uppercase</td>
                     <td>{{nombre | uppercase}}</td>
@@ -37,8 +42,117 @@
                     <td>slice:0:3</td>
                     <td>{{nombre | slice:0:3}}</td>
                 </tr>
+                <tr>
+                    <td>{{arreglo}}</td>
+                    <td>slice:0:3</td>
+                    <td>{{arreglo | slice:1:5}}</td>
+                </tr>
+                <tr>
+                    <td>{{PI}}</td>
+                    <td>number:'3.0-0' </td>
+                    <td>{{PI | number:'3.0-0' }}</td>
+                </tr>
+                <tr>
+                    <td>{{PI}}</td>
+                    <td>number:'.0-2' </td>
+                    <td>{{PI | number:'.0-2' }}</td>
+                </tr>
+                <tr>
+                    <td>{{porcentaje}}</td>
+                    <td>percent</td>
+                    <td>{{porcentaje | percent }}</td>
+                </tr>
+                <tr>
+                    <td>{{porcentaje}}</td>
+                    <td>percent:'.2-2'</td>
+                    <td>{{porcentaje | percent:'.2-2' }}</td>
+                </tr>
+                <tr>
+                    <td>{{salario}}</td>
+                    <td>currency</td>
+                    <td>{{salario | currency }}</td>
+                </tr>
+                <tr>
+                    <td>{{salario}}</td>
+                    <td>currency:'EUR' <b>ISO_4217</b> </td>
+                    <td>{{salario | currency:'EUR' }}</td>
+                </tr>
+                <tr>
+                    <td>{{salario}}</td>
+                    <td>currency:'CNY':'symbol':'0.0-0' <b>ISO_4217</b> </td>
+                    <td>{{salario | currency:'CNY' :'symbol':'0.0-0' }}</td>
+                </tr>
+                <tr>
+                    <td>{{valorPromesa}}</td>
+                    <td>async (promesa)</td>
+                    <td>{{valorPromesa | async}}</td>
+                </tr>
+                <tr>
+                    <td>{{fecha}}</td>
+                    <td>date</td>
+                    <td>{{fecha | date }}</td>
+                </tr>
+                <tr>
+                    <td>{{fecha}}</td>
+                    <td>date medium</td>
+                    <td>{{fecha | date:'medium' }}</td>
+                </tr>
+                <tr>
+                    <td>{{fecha}}</td>
+                    <td>date short</td>
+                    <td>{{fecha | date:'short' }}</td>
+                </tr>
+                <tr>
+                    <td>{{fecha}}</td>
+                    <td>date MMMM -dd</td>
+                    <td>{{fecha | date:'MMMM-dd' }}</td>
+                </tr>
+                <tr>
+                    <td>{{fecha}}</td>
+                    <td>date:'MMMM-dd':'':'{{idioma}}'
+                        <br>
+                        <button (click)="idioma='es'" class="btn btn-primary">Español</button>
+                        <button (click)="idioma='en'" class="btn btn-secondary">Ingles</button>
+                        <button (click)="idioma='fr'" class="btn btn-success">Frances</button>
+
+                    </td>
+                    <td>{{fecha | date:'MMMM-dd':'':idioma}}</td>
+                </tr>
+                <tr>
+                    <td>{{nombre}}</td>
+                    <td>contraseña: {{activar}}
+                        <br>
+                        <button (click)="activar= !activar" class="btn btn-outline-primary">
+                            activar/desactivar
+                            
+                        </button>
+                    </td>
+                    <td>{{nombre | pass:activar }}</td>
+                </tr>
+
             </tbody>
         </table>
+        <h4>Slice</h4>
+        <ul>
+            <li *ngFor="let item of arreglo | slice:5:20">{{item}}</li>
+        </ul>
+        <h3>JSON</h3>
+        <hr>
+        <div class="row mb-5">
+            <div class="col">
+                <pre>
+                    {{heroe | json}}
+                </pre>
+            </div>
+        </div>
 
+    </div>
+</div>
+
+<h3 class="mt-4">Dom Seguro</h3>
+<hr>
+<div class="row mb-5">
+    <div class="col">
+        <iframe width="703" height="395" [src]="videoUrl | domseguro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </div>
